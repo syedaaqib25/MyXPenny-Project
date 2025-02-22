@@ -1,13 +1,9 @@
-// components/ui/Button.jsx
+import React from "react";
 
-import React from 'react';
-
-const Button = ({ label, onClick }) => {
+export const Button = ({ children, onClick, className }) => {
   return (
-    <button onClick={onClick} className="btn">
-      {label}
+    <button onClick={onClick} className={`btn ${className}`}>
+      {children}
     </button>
   );
 };
-
-export default Button;
