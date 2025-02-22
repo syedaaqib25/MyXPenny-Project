@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+dist/
+.vite/
+
+# Environment Variables
+.env
+.env.local
+
+# Editor settings
+.idea/
+.vscode/
