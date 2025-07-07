@@ -9,7 +9,7 @@ A simple React-based expense tracker built using **Vite** and **Tailwind CSS**.
 ## Demo : https://myxpenny-urmj.onrender.com
 ## Installation
 ```sh
-git clone https://github.com/YOUR_USERNAME/myxpenny.git
+git clone https://github.com/syedaaqib25/MyXPenny-Project.git
 cd myxpenny
 npm install
 npm run dev
