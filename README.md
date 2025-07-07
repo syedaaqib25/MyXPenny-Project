@@ -6,7 +6,7 @@ A simple React-based expense tracker built using **Vite** and **Tailwind CSS**.
 ✅ Add expenses with category and notes  
 ✅ View expense history  
 ✅ Fetch AI-powered saving tips  
-##Demo : https://myxpenny-urmj.onrender.com
+## Demo : https://myxpenny-urmj.onrender.com
 ## Installation
 ```sh
 git clone https://github.com/YOUR_USERNAME/myxpenny.git
