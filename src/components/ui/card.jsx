@@ -1,14 +1,18 @@
 // src/components/ui/card.jsx
 import React from "react";
 
-// Example card component
-const Card = ({ title, content }) => {
+export function Card({ children }) {
   return (
-    <div className="card">
-      <h3 className="card-title">{title}</h3>
-      <p className="card-content">{content}</p>
+    <div className="rounded-lg border bg-white shadow p-4">
+      {children}
     </div>
   );
-};
+}
 
-export default Card;
+export function CardContent({ children }) {
+  return (
+    <div className="mt-2 text-sm text-gray-700">
+      {children}
+    </div>
+  );
+}

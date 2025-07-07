@@ -1,8 +1,6 @@
-// components/ui/Input.jsx
-
 import React from 'react';
 
-const Input = ({ type, placeholder, value, onChange }) => {
+export function Input({ type, placeholder, value, onChange }) {
   return (
     <input
       type={type}
@@ -12,6 +10,4 @@ const Input = ({ type, placeholder, value, onChange }) => {
       className="input"
     />
   );
-};
-
-export default Input;
+}

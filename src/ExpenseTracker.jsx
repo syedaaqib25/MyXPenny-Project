@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function ExpenseTracker() {
   const [expenses, setExpenses] = useState([]);
@@ -20,10 +28,17 @@ export default function ExpenseTracker() {
 
   const categories = ["Groceries", "Rent", "Transport", "Entertainment", "Utilities", "Other"];
 
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF6384", "#36A2EB"];
+
+  const expenseData = categories.map((cat) => {
+    const total = expenses
+      .filter((e) => e.category === cat)
+      .reduce((sum, e) => sum + parseFloat(e.amount || 0), 0);
+    return { name: cat, value: total };
+  }).filter((d) => d.value > 0);
+
   useEffect(() => {
-    fetch("https://api.example.com/saving-tips") // Replace with actual API
-      .then((res) => res.json())
-      .then((data) => setSavingTip(data.tip));
+    setSavingTip("Track your daily expenses to avoid end-of-month surprises.");
   }, []);
 
   const addExpense = () => {
@@ -77,6 +92,36 @@ export default function ExpenseTracker() {
           </ul>
         </div>
       </div>
+
+      <Card className="mb-4">
+        <CardContent>
+          <h2 className="font-semibold mb-2">Expense Breakdown:</h2>
+          {expenseData.length ? (
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={expenseData}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  fill="#8884d8"
+                  label
+                >
+                  {expenseData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-sm text-gray-500">No data to show yet.</p>
+          )}
+        </CardContent>
+      </Card>
       
       <div className="flex justify-end mb-4">
         <Dialog>
